@@ -1,10 +1,15 @@
 import React from "react";
 
-const Ratter: React.FC = (): JSX.Element => {
-  return <div className="inline-flex items-center">
-      <span className="text-md font-bold text-green-400">3,7</span>
-      <img className="w-5 h-5 mb-1" src="/icons/star.svg"/>
-  </div>;
+interface IRatter {
+  ratting: string;
+}
+const Ratter: React.FC<IRatter> = ({ ratting }): JSX.Element => {
+  return (
+    <div className="inline-flex items-center">
+      <span className={`text-md font-bold text-${parseInt(ratting)>= 4? 'green' : 'yellow'}-400`}>{ratting}</span>
+      <img className="w-5 h-5 mb-1" src="/icons/star.svg" />
+    </div>
+  );
 };
 
 export default Ratter;
