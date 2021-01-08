@@ -7,10 +7,10 @@ const AppBar: React.FC = (): JSX.Element => {
       </h1>
       <ul className="flex items-center">
         <li className="px-1">
-          <img className="w-6 h-6" src="icons/search.svg"/>
+          <img className="w-6 h-6" src="icons/search.svg" alt="Search"/>
         </li>
         <li className="px-1">
-        <img className="w-6 h-6" src="icons/filter.svg"/>
+        <img className="w-6 h-6" src="icons/filter.svg" alt="Filter"/>
         </li>
       </ul>
     </div>

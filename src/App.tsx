@@ -1,19 +1,19 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Switch,
   Route,
   BrowserRouter as Router,
-  BrowserRouter,
 } from "react-router-dom";
 import "./App.css";
 import { IRestaurant } from "./common/types";
-import AppBar from "./components/layout/AppBar";
-import Card from "./components/layout/Card";
 import { RestaurantContext } from "./context/restaurant/RestaurantContext";
 import Home from "./pages/Home";
+import Restaurant from "./pages/Restaurant";
 import { getRestaurants } from "./services/api";
 const App: React.FC = (): JSX.Element => {
   const [restaurants, setRestaurants] = useState<IRestaurant[]>([]);
+  const [restaurant, setRestaurant] = useState<IRestaurant>();
+
   useEffect(() => {
     getRestaurants().then((data) => {
       setRestaurants(data);
@@ -21,13 +21,14 @@ const App: React.FC = (): JSX.Element => {
   }, []);
 
   return (
-    <RestaurantContext.Provider value={{ restaurants, setRestaurants }}>
+    <RestaurantContext.Provider value={{ restaurants, setRestaurants, restaurant,setRestaurant }}>
       <div className="App">
-        <BrowserRouter>
+        <Router>
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/restaurant" component={Restaurant} />
           </Switch>
-        </BrowserRouter>
+        </Router>
       </div>
     </RestaurantContext.Provider>
   );
