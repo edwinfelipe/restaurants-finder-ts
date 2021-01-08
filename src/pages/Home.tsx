@@ -7,7 +7,7 @@ import { RestaurantContext } from "../context/restaurant/RestaurantContext";
 
 const Home: React.FC = (): JSX.Element => {
   const history = useHistory();
-  const { restaurants, setRestaurant } = useContext(RestaurantContext);
+  const { restaurants } = useContext(RestaurantContext);
   return (
     <Fragment>
       <AppBar />
@@ -16,7 +16,6 @@ const Home: React.FC = (): JSX.Element => {
           key={r.id}
           id={r.id}
           onClick={() => {
-            setRestaurant(r);
             history.push(`/restaurant/${r.id}`);
           }}
         />
